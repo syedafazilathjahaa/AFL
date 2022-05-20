@@ -11,10 +11,10 @@ RUN apt-get install -y \
     g++ \
     make \
     wget \
-    gdb
-RUN cd /tmp && wget http://lcamtuf.coredump.cx/afl/releases/afl-"$AFL_VERSION".tgz
-RUN cd /tmp \
-    && tar xf afl-"$AFL_VERSION".tgz \
-    && cd afl-"$AFL_VERSION" \
-    && make -j all install PREFIX=/usr
-RUN rm -rf /tmp/afl-"$AFL_VERSION"*
+    gdb \
+    llvm-dev \
+    llvm \
+    clang \
+    libasan
+    
+WORKDIR AFL
