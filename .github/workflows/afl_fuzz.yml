@@ -36,7 +36,7 @@ jobs:
         run: |
           
           AFL_HARDEN=1 ./afl-gcc -fsanitize=address ReadFile/imgRead_Fuzzer.c -o ReadFile/imgRead_Fuzzer
-          echo imgRead_Fuzzer >ReadFile/imgRead_Fuzzer
+          
           
       - name: AFL Processing Image
         run: |
