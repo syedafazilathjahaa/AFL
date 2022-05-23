@@ -32,7 +32,9 @@ jobs:
           sudo make install
         
       - name: AFL Build
-        run: AFL_HARDEN=1 afl-gcc -fsanitize=address /ReadFile/imgRead_Fuzzer.c -o imgRead_Fuzzer
+        run: |
+          cd ReadFile
+          AFL_HARDEN=1 afl-gcc -fsanitize=address imgRead_Fuzzer.c -o imgRead_Fuzzer
           
       - name: AFL Processing Image
         run: |
