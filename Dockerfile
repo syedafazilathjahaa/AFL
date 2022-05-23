@@ -1,8 +1,7 @@
 FROM ubuntu:14.10
-MAINTAINER Jussi Judin <jjudin+docker@iki.fi>
 
-ENV AFL_VERSION 1.73b
-
+COPY . $SRC/AFL
+WORKDIR AFL 
 RUN apt-get update
 RUN apt-get install -y \
     libc6-dev \
@@ -17,4 +16,4 @@ RUN apt-get install -y \
     clang \
     libasan
     
-WORKDIR AFL
+
