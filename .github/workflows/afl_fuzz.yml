@@ -21,10 +21,11 @@ jobs:
         run: |
           make
           cd llvm_mode
-          make
+          export $LLVM_CONFIG=llvm-config-3.5
+          sudo make
           cd ..
           cd AFL
-          make install
+          sudo make install
         
       - name: AFL Build
         run: |
