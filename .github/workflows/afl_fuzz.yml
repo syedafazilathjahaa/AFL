@@ -34,7 +34,7 @@ jobs:
       - name: AFL Build
         run: |
           cd ReadFile
-          AFL_HARDEN=1 afl-gcc -fsanitize=address AFL/ReadFile/imgRead_Fuzzer.c -o imgRead_Fuzzer
+          AFL_HARDEN=1 afl-gcc -fsanitize=address /ReadFile/imgRead_Fuzzer.c -o imgRead_Fuzzer
           
       - name: AFL Processing Image
         run: |
