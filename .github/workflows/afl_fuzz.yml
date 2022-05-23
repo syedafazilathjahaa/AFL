@@ -23,6 +23,7 @@ jobs:
       - name: AFL Build
         run: |
           sudo make
+          afl-gcc
           cd ReadFile
           AFL_HARDEN=1 afl-gcc -fsanitize=address -fsanitize=undefined imgRead_Fuzzer.c -o imgRead_fuzzer
       - name: AFL image Build
