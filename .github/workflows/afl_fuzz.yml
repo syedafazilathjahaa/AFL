@@ -45,8 +45,10 @@ jobs:
           cd ..
            
       - name: AFL Run
-        run: afl-fuzz -i ReadFile/input/ -o ReadFile/output -m none -- ./ReadFile/imgRead_Fuzzer @@
-        
+        run: |
+         afl-fuzz -i ReadFile/input/ -o ReadFile/output -m none -- ./ReadFile/imgRead_Fuzzer @@
+         time.sleep(20) 
+         
       - name: Upload a Build Artifact
         uses: actions/upload-artifact@v3.1.0
         with:
