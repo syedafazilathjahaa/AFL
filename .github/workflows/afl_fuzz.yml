@@ -20,6 +20,7 @@ jobs:
       AFL_I_DONT_CARE_ABOUT_MISSING_CRASHES: 1
     
     steps:
+      - uses: actions/checkout@v3
       - name: Compilation
         run: |
           make
@@ -32,7 +33,7 @@ jobs:
         
       - name: AFL Build
         run: |
-          cd ReadFile
+          cd AFL/ReadFile
           AFL_HARDEN=1 afl-gcc -fsanitize=address imgRead_Fuzzer.c -o imgRead_Fuzzer
           
       - name: AFL Processing Image
