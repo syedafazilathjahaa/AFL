@@ -29,16 +29,14 @@ jobs:
         
       - name: AFL Build
         run: |
-          cd AFL/ReadFile
+          cd ReadFile
           AFL_HARDEN=1 afl-gcc -fsanitize=address -fsanitize=undefined imgRead_Fuzzer.c -o imgRead_fuzzer
           
       - name: AFL Processing Image
         run: |
-          cd AFL/ReadFile/input
+          cd input
           hexyl image.img
           cd ..
           
       - name: AFL Run
-        run: |
-          cd AFL/ReadFile
-          afl-fuzz -i input/ -o output -m none -- ./imgRead_Fuzzer @@
+        run: afl-fuzz -i input/ -o output -m none -- ./imgRead_Fuzzer @@
