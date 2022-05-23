@@ -1,8 +1,5 @@
 name: AFL
 
-
-
-
 on:
   push:
     branches: [ master ]
@@ -20,9 +17,7 @@ jobs:
   AFL-Fuzzer:
     runs-on: ubuntu-latest
     env: 
-      x: AFL_I_DONT_CARE_ABOUT_MISSING_CRASHES=1 AFL_NO_UI=1 AFL_STOP_MANUALLY=1
-      y: AFL_I_DONT_CARE_ABOUT_MISSING_CRASHES=1 AFL_NO_UI=1 AFL_EXIT_WHEN_DONE=1
-      z: AFL_I_DONT_CARE_ABOUT_MISSING_CRASHES=1 AFL_NO_UI=1 AFL_BENCH_JUST_ONE=1
+      AFL_I_DONT_CARE_ABOUT_MISSING_CRASHES: 1
     
     steps:
       - uses: actions/checkout@v3
