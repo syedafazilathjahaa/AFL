@@ -34,7 +34,7 @@ jobs:
           
       - name: AFL Processing Image
         run: |
-          cd input
+          cd ReadFile/input
           hexyl image.img
           cd ..
           
