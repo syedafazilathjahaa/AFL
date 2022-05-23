@@ -25,7 +25,6 @@ jobs:
           set $LLVM_CONFIG=llvm-config-3.5
           sudo make
           cd ..
-          cd AFL
           sudo make install
         
       - name: AFL Build
