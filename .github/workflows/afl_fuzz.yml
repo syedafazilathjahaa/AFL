@@ -30,11 +30,12 @@ jobs:
           sudo make
           cd ..
           sudo make install
+          
         
       - name: AFL Build
         run: |
-          cd ReadFile
-          afl-gcc -fsanitize=address imgRead_Fuzzer.c -o imgRead_Fuzzer
+          
+          AFL_HARDEN=1 ./afl-gcc -fsanitize=address ReadFile/imgRead_Fuzzer.c -o imgRead_Fuzzer
           
       - name: AFL Processing Image
         run: |
