@@ -45,7 +45,6 @@ jobs:
       - name: AFL Run
         run: |
           afl-fuzz -i ReadFile/input/ -o ReadFile/output -m none -- ./ReadFile/imgRead_Fuzzer @@
-          echo "afl-pause - pause fuzzers"
         
        
          
