@@ -14,6 +14,5 @@ RUN apt-get install -y \
     llvm-dev \
     llvm \
     clang \
-    libasan
-    
+
 
