@@ -1,4 +1,4 @@
-FROM ubuntu:14.10
+FROM gcr.io/oss-fuzz-base/base-builder
 
 COPY . $SRC/AFL
 WORKDIR AFL 
