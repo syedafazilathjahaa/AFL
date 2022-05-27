@@ -14,6 +14,21 @@ permissions:
 
 
 jobs:
+  build:
+
+    runs-on: ubuntu-latest    
+     
+    steps:
+    - uses: actions/checkout@v3
+    
+    - name: Build and push docker image
+      uses: mr-smithers-excellent/docker-build-push@v4
+      with:
+        image: khushi2/oss-fuzz
+        registry: docker.io
+        username: ${{ secrets.DOCKER_USERNAME }}
+        password: ${{ secrets.DOCKER_PASSWORD }}
+        
   AFL-Fuzzer:
     runs-on: ubuntu-latest
     env: 
@@ -33,6 +48,11 @@ jobs:
           
         
       - name: AFL Build
+        id: build
+        uses: google/oss-fuzz/infra/cifuzz/actions/build_fuzzers@master
+        with: 
+          language: c
+      - name: Build Fuzzer
         run: AFL_HARDEN=1 ./afl-gcc -fsanitize=address ReadFile/imgRead_Fuzzer.c -o ReadFile/imgRead_Fuzzer
           
           
@@ -43,6 +63,11 @@ jobs:
           cd ..
            
       - name: AFL Run
+        uses: google/oss-fuzz/infra/cifuzz/actions/run_fuzzers@master
+        with:
+          language: c
+          
+      - name: Run Fuzzer
         run: |
           afl-fuzz -i ReadFile/input/ -o ReadFile/output -m none -- ./ReadFile/imgRead_Fuzzer @@
         
