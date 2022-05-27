@@ -13,6 +13,7 @@ RUN apt-get install -y \
     gdb \
     llvm-dev \
     llvm \
-    clang \
+    clang
 
 
+COPY .clusterfuzzlite/build.sh $SRC
