@@ -31,6 +31,10 @@ jobs:
         
   AFL-Fuzzer:
     runs-on: ubuntu-latest
+    strategy:
+        fail-fast: false
+        matrix:
+            sanitizer: [address]
     env: 
       AFL_I_DONT_CARE_ABOUT_MISSING_CRASHES: 1
     
@@ -47,7 +51,7 @@ jobs:
           sudo make install
           
         
-      - name: AFL Build
+      - name: AFL Build (${{ matrix.sanitizer }})
         id: build
         uses: google/oss-fuzz/infra/cifuzz/actions/build_fuzzers@master
         with: 
@@ -62,7 +66,7 @@ jobs:
           xxd image.img
           cd ..
            
-      - name: AFL Run
+      - name: AFL Run (${{ matrix.sanitizer }})
         uses: google/oss-fuzz/infra/cifuzz/actions/run_fuzzers@master
         with:
           language: c
