@@ -17,3 +17,4 @@ RUN apt-get install -y \
 
 
 COPY .clusterfuzzlite/build.sh $SRC
+ENV LLVM_CONFIG=llvm-config-10
