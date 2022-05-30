@@ -1,4 +1,3 @@
-cd AFL
 make
 cd llvm_mode
 sudo apt-get install -y clang llvm-dev
